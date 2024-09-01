@@ -1,0 +1,16 @@
+fonction trouverRépartitions(typesLogement, nombrePersonnes):
+    dp = tableau de listes vides de taille nombrePersonnes + 1
+    dp[0] = [[]]
+
+    pour chaque capacité dans typesLogement:
+        pour i de capacité à nombrePersonnes:
+            pour chaque répartition dans dp[i - capacité]:
+                ajouter (répartition + [capacité]) à dp[i]
+
+    retourner dp[nombrePersonnes]
+
+fonction principal():
+    typesLogement = [1, 2]
+    nombrePersonnes = 3
+    résultats = trouverRépartitions(typesLogement, nombrePersonnes)
+    afficher résultats
