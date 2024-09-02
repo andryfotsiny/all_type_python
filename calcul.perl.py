@@ -1,22 +1,16 @@
-#!/usr/bin/perl
-use strict;
-use warnings;
+from googleapiclient.discovery import build
 
-# Saisie des deux nombres
-print "Entrez le premier nombre : ";
-my $nombre1 = <STDIN>;
-chomp($nombre1);
+# Remplacez par votre propre clé API
+api_key = 'AIzaSyAjnReVbpinmTsCKPGeg70I2FevX3F5qxk'
 
-print "Entrez le deuxième nombre : ";
-my $nombre2 = <STDIN>;
-chomp($nombre2);
+# Créez le service Google Books
+service = build('books', 'v1', developerKey=api_key)
 
-# Calcul de la somme
-my $somme = $nombre1 + $nombre2;
+# Exécutez une recherche
+request = service.volumes().list(q='Python programming')
+response = request.execute()
 
-# Vérification de la somme
-if ($somme > 10) {
-    print "oui\n";
-} else {
-    print "non\n";
-}
+# Affichez les résultats
+for item in response.get('items', []):
+    title = item['volumeInfo'].get('title', 'No title')
+    print(f'Title: {title}')
