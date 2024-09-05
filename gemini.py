@@ -52,5 +52,5 @@ bouton_envoyer.pack(pady=10)
 label_resultat = tk.Label(fenetre, text="Résultat : ")
 label_resultat.pack(pady=10)
 
-# Lancement de la boucle principale de l'interface
+
 fenetre.mainloop()
